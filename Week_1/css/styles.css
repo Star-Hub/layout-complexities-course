@@ -1,3 +1,180 @@
 * {
-    color: blue;
+    box-sizing: border-box;
+}
+
+.rating {
+    width: 100px;
+  }
+.rating input[type="radio"] {
+    display: none;
+  }
+.rating__star {
+    position: relative;
+    float: right;
+    display: block;
+    width: 10px;
+    height: 27px;
+    cursor: pointer;
+    /* border: 1px solid red; */
+    overflow: hidden;
+  }
+
+.rating__star:nth-child(4n+4) span {
+      color: lightgray;
+      font-size: 1.3rem;
+      position: absolute;
+      right: -0.52rem;
+  }
+
+.rating__star:nth-child(4n+2) span {
+    color: lightgray;
+    font-size: 1.3rem;
+    position: absolute;
+    left: -0.52rem;
+}
+
+  /*Пишем правила смены положения background-а*/
+  .rating .rating__star:hover span, /*Правило для ховера на текущий лейбл*/
+  .rating .rating__star:hover ~ .rating__star span, /*Правило для всех следующих лейблов по DOM дереву*/
+  .rating input:checked ~ .rating__star span/*Правило для всех следующих лейблов после выбранного инпута, чтобы звездочки как бы зафиксировались*/
+  {
+      color: gold;
+  }
+
+.item__img {
+    width: 100%;
+    max-width: 200px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+/* .item__img:hover {
+    opacity: 0.7;
+} */
+
+.item__txt {
+    height: 170px;
+    /* border: 1px solid blue; */
+    overflow: auto;
+    padding: 5px;
+}
+
+.item__txt p {
+    text-align: left;
+    /* border: 1px solid blue; */
+    margin: 2px 0;
+}
+
+.item__name {
+    white-space: nowrap;
+    overflow: hidden;
+    /* ellipsis - это многоточие */
+    text-overflow: ellipsis; 
+    /* width: 50%; */
+}
+
+.item__name a {
+    font-size: 1.2em;
+}
+
+.item__name a:hover {
+    color: red;
+}
+
+.item__ctg a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    font-weight: 600;
+    color:rgb(138, 138, 138);
+}
+
+.item__ctg a:hover {
+    color: coral;
+}
+
+.item-rating input:checked + span {
+    color: red;
+}
+
+.item__price-block {
+    text-align: left;
+}
+
+.item__price-block .item__current-price {
+    color: brown;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.item__price-block .item__old-price {
+    text-decoration: line-through;
+    font-size: 0.9rem;
+}
+
+.item__img-env {
+    position: relative;
+    height: 350px;
+    /* border: 1px solid green; */
+}
+
+.item {
+    text-align: center;
+    /* border: 1px dashed blue; */
+    /* height: 33vh; */
+    vertical-align: middle;
+}
+
+.item:hover .item__img {
+    opacity: 0.7;
+}
+
+/* Здесь селекторы для перехода отображения на список */
+#list_view:checked ~ .container .item__img-env,
+#list_view:checked ~ .container .item__txt {
+    display: inline-block;
+    width: 49%;
+}
+
+#list_view:checked ~ .container .item {
+    display: block;
+    width: 100%;
+}
+
+#list_view + label {
+    font-size: 1.1rem;
+    color: orange;
+    font-weight: bold;
+}
+
+/********** Desktop view **********/
+@media (min-width: 992px) {
+    .item {
+        display: inline-block;
+        width: 24%;
+    }
+}
+
+/********** Tablet view **********/
+@media (min-width: 768px) and (max-width: 991px) {
+    .item {
+        display: inline-block;
+        width: 32%;
+    }
+}
+
+/********** List view **********/
+@media (min-width: 576px) and (max-width: 767px) {
+    .item {
+        display: inline-block;
+        width: 49%;
+    }
+}
+
+@media (max-width: 575px) {
+    .item {
+        display: block;
+    }
 }
