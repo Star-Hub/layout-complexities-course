@@ -1,5 +1,8 @@
+**/*
 !**/.gitignore
 !**/*.html
 !**/*.css
 !**/*.js
+!**/*.jpg
+!**/*.png
 Web_Components
