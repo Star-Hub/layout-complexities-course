@@ -8,8 +8,11 @@
 .rating input[type="radio"] {
     display: none;
   }
+
+/* Далее идет блок для рейтинга */
 .rating__star {
     position: relative;
+    /* Чтобы выделялись звездочки до текущей, а не после пишем float: right*/
     float: right;
     display: block;
     width: 10px;
@@ -18,7 +21,8 @@
     /* border: 1px solid red; */
     overflow: hidden;
   }
-
+/* <div class="rating">
+<label class="rating__star"><input name="rating" type="radio" /><span>&#x2605</span></label> */
 .rating__star:nth-child(4n+4) span {
       color: lightgray;
       font-size: 1.3rem;
@@ -33,10 +37,11 @@
     left: -0.52rem;
 }
 
-  /*Пишем правила смены положения background-а*/
-  .rating .rating__star:hover span, /*Правило для ховера на текущий лейбл*/
-  .rating .rating__star:hover ~ .rating__star span, /*Правило для всех следующих лейблов по DOM дереву*/
-  .rating input:checked ~ .rating__star span/*Правило для всех следующих лейблов после выбранного инпута, чтобы звездочки как бы зафиксировались*/
+  /*Для выделения звездочек*/
+  .rating .rating__star:hover span, /*Выделение текущей звездочки*/
+  .rating .rating__star:hover ~ .rating__star span, /*Правило для всех следующих звездочек по DOM дереву*/
+  .rating input:checked ~ .rating__star span/*Правило для всех следующих звездочек после выбранного input, 
+  чтобы звездочки зафиксировались*/
   {
       color: gold;
   }
@@ -136,6 +141,12 @@
 #list_view:checked ~ .container .item__txt {
     display: inline-block;
     width: 49%;
+    vertical-align: top;
+    overflow: visible;
+}
+
+#list_view:checked ~ .container .item__img {
+    top: 0;
 }
 
 #list_view:checked ~ .container .item {
